@@ -1,11 +1,14 @@
 
-import useContext from 'react'; 
+import {useContext} from 'react'; 
 import { Navigate } from 'react-router-dom'; 
-import { RutaProtegidaContext } from '../../context/RutaProtegidaContext';
+import { AuthContext } from '../../context/AuthContext.jsx';
 
 
  
-function RutaProtegida({ isAuthenticated, children }) { 
+function RutaProtegida({ children }) { 
+
+  const {isAuthenticated} = useContext(AuthContext)
+  
   if (!isAuthenticated) { 
     return <Navigate to="/login" replace />; 
   } 

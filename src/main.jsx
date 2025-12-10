@@ -4,17 +4,17 @@ import './index.css'
 import App from './App.jsx'
 import { CarritoProvider } from '../context/CarritoContext.jsx'
 import { BrowserRouter as Router } from 'react-router-dom';
-import { RutaProtegidaProvider } from '../context/RutaProtegidaContext.jsx'
+import { AuthProvider } from '../context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
 
   <StrictMode>
     <Router>
-      <RutaProtegidaProvider>
+      <AuthProvider>
       <CarritoProvider>
         <App />
       </CarritoProvider>
-      </RutaProtegidaProvider>
+      </AuthProvider>
     </Router>
   </StrictMode>,
 )

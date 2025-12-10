@@ -11,11 +11,11 @@ import Inicio from './components/Inicio'
 import ProductoUnico from './components/ProductoUnico'
 import RutaProtegida from './components/RutaProtegida'
 import Login from './components/Login'
-import { RutaProtegidaContext } from '../context/RutaProtegidaContext'
+import { AuthContext } from '../context/AuthContext'
+import RutaAdmin from "./components/RutaAdmin"
+import AdminProductos from "./components/AdminProductos"
 
 function App() {
-
-  const {isAuthenticated} = useContext(RutaProtegidaContext)
 
 
   return (
@@ -29,11 +29,17 @@ function App() {
         <Route path="/productos" element={<Productos />} />
 
         <Route path="/carrito" element={
-          isAuthenticated ?
-            <RutaProtegida isAuthenticated={isAuthenticated}>
+               <RutaProtegida>
               <Carrito />
             </RutaProtegida>
-            : < Navigate to="/login" replace />
+            
+        } />
+
+        <Route path="/admin/productos" element={
+               <RutaAdmin>
+              <AdminProductos />
+            </RutaAdmin>
+            
         } />
 
         <Route path="/productos/:id" element={<ProductoUnico />} />

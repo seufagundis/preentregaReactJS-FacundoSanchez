@@ -7,27 +7,32 @@ function Productos() {
 
     const {agregarAlCarrito} = useContext(CarritoContext)
 
+     const [error, setError] = useState(null);
+
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
+        fetch('https://68f5097cb16eb6f468363490.mockapi.io/productos')
             .then((respuesta) => respuesta.json())
             .then((datos) => setProductos(datos))
-            .catch((error) => console.error('Error:', error));
+            .catch((error) => setError(error.message));
     }, []);
 
-    if (productos==0) {
+
+    if (productos.length == 0) {
     return <h2>Cargando productos...</h2>;
   }
-
+    if(error){
+        return <h2>Ocurrió el siguiente error: {error}</h2>
+    }
     return (
         <div className="productos-container"> 
             {productos.map((producto) => (
                 <div key={producto.id} className="card">
                     <img 
                         src={producto.image} 
-                        alt={producto.title}
+                        alt={producto.name}
                         className="card-image"
                     />
-                    <h3 className="card-name">{producto.title}</h3>
+                    <h3 className="card-name">{producto.name}</h3>
                     <p className="card-description">{producto.description}</p>
                     <p className="card-price">${producto.price}</p>
                     <button onClick= {()=>agregarAlCarrito(producto)}className="card-button">
