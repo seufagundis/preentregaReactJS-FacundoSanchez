@@ -1,12 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CarritoContext } from '../../context/CarritoContext';
 import { SearchContext } from "../../context/SearchContext";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
+
 
 
 function Productos() {
     const [productos, setProductos] = useState([]);
 
     const { busqueda } = useContext(SearchContext);
+
+    const { isAuthenticated } = useContext(AuthContext);
 
     const { agregarAlCarrito } = useContext(CarritoContext)
 
@@ -70,7 +75,18 @@ function Productos() {
                             <h3 className="card-name">{producto.name}</h3>
                             <p className="card-description">{producto.description}</p>
                             <p className="card-price">${producto.price}</p>
-                            <button onClick={() => agregarAlCarrito(producto)} className="card-button">
+
+                            <button
+                                className="card-button"
+                                onClick={() => {
+                                    if (!isAuthenticated) {
+                                        toast.warning("Debes iniciar sesión para agregar productos al carrito");
+                                        return;
+                                    }
+                                    agregarAlCarrito(producto);
+                                    toast.success(`Agregaste "${producto.name}" al carrito`);
+                                }}
+                            >
                                 Agregar al carrito
                             </button>
 

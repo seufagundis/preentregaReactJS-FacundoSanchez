@@ -2,6 +2,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 const LoginWrapper = styled.div`
   min-height: 60vh;
@@ -61,10 +62,13 @@ function Login() {
     const inicioSesionUsuario = () => {
         iniciarSesion("token-user", "user")
         navigate("/productos")
+        toast.success("Iniciaste sesión como usuario");
     }
+
     const inicioSesionAdmin = () => {
         iniciarSesion("token-admin", "admin")
         navigate("/admin/productos")
+        toast.success("Iniciaste sesión como administrador");
     }
     return (
         <LoginWrapper>

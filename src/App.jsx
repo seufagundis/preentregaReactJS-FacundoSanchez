@@ -14,6 +14,9 @@ import Login from './components/Login'
 import { AuthContext } from '../context/AuthContext'
 import RutaAdmin from "./components/RutaAdmin"
 import AdminProductos from "./components/AdminProductos"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
 
@@ -46,6 +49,9 @@ function App() {
         <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
+
+        <ToastContainer position="top-center" autoClose={1500} />
+
 
     </div>
 

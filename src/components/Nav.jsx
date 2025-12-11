@@ -2,6 +2,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { SearchContext } from "../../context/SearchContext";
+import { toast } from "react-toastify";
+
 
 function Nav() {
   const { isAdmin, isAuthenticated, cerrarSesion } = useContext(AuthContext);
@@ -15,6 +17,7 @@ function Nav() {
 
   const handleLogout = () => {
     cerrarSesion();
+    toast.info("Cerraste sesión correctamente");
     navigate("/login");
   };
 
