@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const InicioWrapper = styled.section`
   padding: 4rem 1rem;
@@ -33,17 +34,22 @@ const InicioCTA = styled.button`
   }
 `;
 
-function Inicio() { 
- return (
+function Inicio() {
+
+  const navigate = useNavigate();
+
+  return (
     <InicioWrapper>
       <InicioTitle>Bienvenido a nuestra tienda online</InicioTitle>
       <InicioText>
         Descubrí los mejores productos al mejor precio. Iniciá sesión y empezá
         a armar tu carrito.
       </InicioText>
-      <InicioCTA>Ver productos</InicioCTA>
+      <InicioCTA onClick={() => navigate("/productos")}> 
+        Ver productos
+      </InicioCTA>
     </InicioWrapper>
   );
-} 
- 
-export default Inicio; 
+}
+
+export default Inicio;
