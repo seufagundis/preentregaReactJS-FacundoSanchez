@@ -96,3 +96,39 @@
     font-weight: bold;
     transition: background 0.3s ease;
 }
+
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+
+  header.bg-primary {
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+  }
+
+  .productos-container {
+    padding: 0 1rem 2rem;
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-image {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+}

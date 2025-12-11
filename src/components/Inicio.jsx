@@ -4,11 +4,19 @@ import { useNavigate } from "react-router-dom";
 const InicioWrapper = styled.section`
   padding: 4rem 1rem;
   text-align: center;
+
+  @media (max-width: 576px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const InicioTitle = styled.h1`
   font-size: 2.5rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 576px) {
+    font-size: 2rem;
+  }
 `;
 
 const InicioText = styled.p`
@@ -16,6 +24,10 @@ const InicioText = styled.p`
   max-width: 600px;
   margin: 0 auto 2rem auto;
   color: #555;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 `;
 
 const InicioCTA = styled.button`
